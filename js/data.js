@@ -8,10 +8,10 @@ const SITE = {
   role: "I am a Data Analyst",
   roles: ["Data Analyst", "HND Computing student", "Data Science explorer", "AI and ML learner"],  // typed after "I'm a" on the home page
   headline: "Hi, I'm Suu Wutt Yee Hnin.",
-  tagline: "Analysis · Research · Statistical Modelling · AI/ML",   // short line of strengths under the role
+  tagline: "Analysis · Research · ETL · Statistical Modelling · AI/ML",   // short line of strengths under the role
   available: "Open to opportunities and collaboration",        // green pill at the top of the home page ("" hides it)
-  intro: "I'm a Data Analyst at Ace of Data and an HND Computing student at KMD College. I passionate about turning messy data into clear answers using statistics, machine learning and forecasting, and I love research in agriculture, finance and healthcare.",
-  photo: "images/Suu_ProPic.PNG", // keep the capital letters exactly as the real file name (leave "" to show your initials)
+  intro: "I'm a Data Analyst at Ace of Data and an HND Computing student at KMD College. I'm passionate about turning messy data into useful insights: extracting and cleaning it, using statistics and machine learning to find patterns and make predictions, and explaining the results in simple words. My research covers agriculture, finance and healthcare.",
+  photo: "images/Suu_ProPic.PNG", 
   email: "suuwuttyeehnin@gmail.com",
   resume: "",                     // e.g. "documents/resume.pdf" (leave "" to hide the button)
   links: [
@@ -24,9 +24,9 @@ const SITE = {
 
   /* ---------- ABOUT PAGE ---------- */
   summary: {
-    who: "I'm Suu Wutt Yee Hnin, a computing student from Yangon, Myanmar. I'm studying for a Bachelor of Information Technology at Technology University (Thanlyin) and a Higher National Diploma in Computing at KMD College.",
+    who: "I'm Suu Wutt Yee Hnin, a computing student from Yangon, Myanmar with a strong interest in Data Science, and Artificial Intelligence. I'm studying for a Bachelor of Information Technology at Technology University (Thanlyin) and a Higher National Diploma in Computing at KMD College.",
     doing: "Right now I'm a Data Analyst at Ace of Data, where I explore research datasets, review academic papers and help with agricultural research across Myanmar and other Asian countries. I'm also building a gold price forecasting model.",
-    can: "I passionate about turning messy data into clear answers: I clean and model it, find patterns with statistics and machine learning, and show the results in charts and reports. I can also explain tricky ideas in simple words, which I practised as an assistant lecturer for HND students."
+    can: "I am passionate about turning messy data into clear answers: I clean and model it, find patterns with statistics and machine learning, and show the results in charts and reports. I can also explain tricky ideas in simple words, which I practised as a lecturer for HND students."
   },
 
   interests: [
