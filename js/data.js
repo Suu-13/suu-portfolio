@@ -5,11 +5,12 @@
 const SITE = {
   name: "Suu Wutt Yee Hnin",
   initials: "SW",
-  role: "HND Computing Student",
-  roles: ["HND Computing student", "Data Science explorer", "AI and ML learner", "Curious problem solver"],  // typed on the home page
+  roles: ["Data Analyst", "HND Computing student", "Data Science explorer", "AI and ML learner"],  // typed after "I'm a" on the home page
   headline: "Hi, I'm Suu Wutt Yee Hnin.",
-  intro: "I study HND Computing at KMD College and I'm building my path in Data Science and Artificial Intelligence. I like turning messy data into clear answers.",
-  photo: "images/Suu_ProPic.PNG",                    // e.g. "images/profile.jpg" (leave "" to show your initials)
+  tagline: "Analysis · Research · Statistical Modelling · AI/ML",   // short line of strengths under the role
+  available: "Open to opportunities and collaboration",        // green pill at the top of the home page ("" hides it)
+  intro: "I'm a Data Analyst at Ace of Data and an HND Computing student at KMD College. I passionate about turning messy data into clear answers using statistics, machine learning and forecasting, and I love research in agriculture, finance and healthcare.",
+  photo: "images/Suu_ProPic.PNG", // keep the capital letters exactly as the real file name (leave "" to show your initials)
   email: "suuwuttyeehnin@gmail.com",
   resume: "",                     // e.g. "documents/resume.pdf" (leave "" to hide the button)
   links: [
@@ -18,13 +19,13 @@ const SITE = {
   ],
 
   skills: ["Data Analysis", "ETL", "Statistical Modeling", "Machine Learning", "Time-Series Forecasting",
-           "AI/ML Research", "Systems Analysis", "Networking", "Web Development", "Database Management"],
+           "AI/ML Research", "Systems Analysis", "Networking", "Databases"],
 
   /* ---------- ABOUT PAGE ---------- */
   summary: {
     who: "I'm Suu Wutt Yee Hnin, a computing student from Yangon, Myanmar. I'm studying for a Bachelor of Information Technology at Technology University (Thanlyin) and a Higher National Diploma in Computing at KMD College.",
     doing: "Right now I'm a Data Analyst at Ace of Data, where I explore research datasets, review academic papers and help with agricultural research across Myanmar and other Asian countries. I'm also building a gold price forecasting model.",
-    can: "I turn messy data into clear answers: I clean and model it, find patterns with statistics and machine learning, and show the results in charts and reports. I can also explain tricky ideas in simple words, which I practised as an assistant lecturer for HND students."
+    can: "I passionate about turning messy data into clear answers: I clean and model it, find patterns with statistics and machine learning, and show the results in charts and reports. I can also explain tricky ideas in simple words, which I practised as an assistant lecturer for HND students."
   },
 
   interests: [
@@ -74,7 +75,7 @@ const SITE = {
       role: "Assistant Lecturer (HND)",
       org: "KMD College",
       location: "Yangon, Myanmar",
-      dates: "February 2026 - April 2026",
+      dates: "June 2025 - April 2026",
       points: [
         { label: "Student Guidance", text: "Acted as a guide for HND students, answering their questions and helping them stay on track with their studies." },
         { label: "Learning Support", text: "Helped students understand their lessons by explaining difficult topics in simpler, everyday terms." },
@@ -109,13 +110,13 @@ const SITE = {
   ],
 
   /* ---------- RESEARCH: paper-reading experience. Copy a { ... }, block to add a card.
-     meta  = type and date shown under the title (replace "Add your date")
+     meta  = type and date shown under the title
      papers = the papers you read, shown when the card is opened ---------- */
   research: [
     {
       icon: "📈",
       title: "Gold Price Drivers & Market Behaviour",
-      meta: "Literature Review (June 2026)",
+      meta: "Literature Review (August 2026)",
       desc: "Reviewed four papers on what moves gold prices: a response-surface study of six macro factors (dollar index, federal funds rate, CPI, exchange rate, oil and the S&P 500), a causality-in-quantiles test of economic policy uncertainty across eight countries, a wavelet analysis of dynamic correlations between gold, oil and stocks, and an explanation of why gold works as a safe haven in market stress.",
       tags: ["Macroeconomics", "Time Series Analysis", "Causality", "Machine Learning"],
       papers: [
@@ -155,7 +156,7 @@ const SITE = {
     {
       icon: "🩺",
       title: "AI in Healthcare & Mental Health",
-      meta: "Research presentation (Oct 2026)",
+      meta: "Research presentation (October 2026)",
       desc: "Read about trust in healthcare AI from three angles: a usability test of three AI symptom-checker apps (ADA, Mediktor and WebMD) that found gaps in explainability and error handling, the FUTURE-AI guideline of six principles (fairness, universality, traceability, usability, robustness, explainability), and a framework for ethical, trustworthy clinical AI. Added WHO global estimates of depression and anxiety as public-health background.",
       tags: ["Healthcare AI", "Explainable AI", "AI Ethics", "Usability", "Mental Health"],
       papers: [
@@ -178,18 +179,15 @@ const SITE = {
     }
   ],
 
-  /* ---------- PROJECTS: status is "Completed" or "Ongoing". Leave link "" if there is none ---------- */
-  /* ============================================================
-   Replace the whole  projects: [ ... ]  array in your data file with this.
-   (Steps 2 and 3, the view and CSS, are unchanged from before.)
-   Items marked CHECK are still my best guess.
-   ============================================================ */
+  /* ---------- PROJECTS: every project has the same shape.
+     status = "Completed" or "Ongoing". Leave link "" if there is none.
+     sections = the blocks shown inside "Project details". Each block can have:
+       text, bullets, chips, or soon (a dashed "coming soon" note) ---------- */
   projects: [
     {
       icon: "🧠",
       title: "Student Mental Health & Academic Pressure Analysis",
       year: "2025",
-      date: "October 2025",
       status: "Completed",
       type: "Collaborative project",
       desc: "Investigated how academic pressure relates to student mental health by turning raw survey and academic data into analysis-ready datasets.",
@@ -214,14 +212,13 @@ const SITE = {
           "Most stressed respondents are aged 15 to 18 (61 of 100), though students under 15 and over 27 also report stress.",
           "Recommendation: schools should offer stress management programmes and stronger academic support."
         ] },
-        { heading: "Tools & Technology", chips: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Exploratory Data Analysis", "Correlation Analysis"] }   /* CHECK */
+        { heading: "Tools & Technology", chips: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Exploratory Data Analysis", "Correlation Analysis"] }
       ]
     },
     {
       icon: "📈",
       title: "Gold Price Forecasting Model",
       year: "2026",
-      date: "June 2026 - present",
       status: "Ongoing",
       type: "Collaborative project",
       desc: "An end-to-end forecasting project that uses statistical and machine learning models to predict gold price movements from historical market data.",
@@ -232,7 +229,7 @@ const SITE = {
         { heading: "What I Have Done", bullets: [
           "Performed data cleaning and standardization to address inconsistencies in financial time-series datasets.",
           "Conducted feature selection and feature engineering, incorporating technical indicators to strengthen model inputs."
-        ] },                                                                                  /* CHECK */
+        ] },
         { heading: "Key Activities To Do", bullets: [
           "Apply statistical and machine learning models to forecast gold price movements.",
           "Evaluate predictive performance using appropriate model evaluation techniques.",
@@ -240,14 +237,13 @@ const SITE = {
           "Write up the results and findings."
         ] },
         { heading: "Methodology", chips: ["Time-Series Forecasting", "Machine Learning", "Feature Engineering", "ETL", "Model Evaluation"] },
-        { heading: "Tools & Techniques", chips: ["Python", "Pandas", "NumPy", "scikit-learn", "Matplotlib", "Technical Indicators", "Statistical Models"] }   /* CHECK */
+        { heading: "Tools & Techniques", chips: ["Python", "Pandas", "NumPy", "scikit-learn", "Matplotlib", "Technical Indicators", "Statistical Models"] }
       ]
     },
     {
       icon: "🎓",
       title: "College Major & Institution ROI Analysis",
       year: "2026",
-      date: "October 2026",
       status: "Completed",
       type: "Collaborative project",
       desc: "Explored the financial return on a college education across majors, institution tiers and regions, using data from 30,000 graduates and 18 variables.",
@@ -274,7 +270,7 @@ const SITE = {
           "GPA has almost no link to ROI (Spearman correlation 0.02), so major choice matters more than grades.",
           "Limitations: the data shows patterns, not cause (for example, family background may explain part of the Ivy Elite advantage), and it covers only 10 years of earnings."
         ] },
-        { heading: "Tools & Technology", chips: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "SciPy", "IQR Outlier Detection", "Spearman Correlation"] }   /* CHECK */
+        { heading: "Tools & Technology", chips: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "SciPy", "IQR Outlier Detection", "Spearman Correlation"] }
       ]
     },
     {
@@ -288,7 +284,7 @@ const SITE = {
       overview: "A cross-disciplinary study of how farming methods, soil conditions, inputs, crop yields and climate shape agriculture in Myanmar, compared with India, Vietnam and Thailand.",
       tags: ["Agricultural Data", "Soil Analysis", "Climate Data", "Python"],
       link: "",
-      repoSoon: true,
+      repoSoon: true,          // shows "GitHub repository: coming soon". Set link above when it is ready.
       sections: [
         { heading: "Key Activities", bullets: [
           "Reviewing literature on agriculture in Myanmar, India, Vietnam and Thailand.",

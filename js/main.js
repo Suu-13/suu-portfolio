@@ -17,12 +17,18 @@
       <section class="hero" id="hero">
         <i class="blob b1"></i><i class="blob b2"></i>
         <div class="hero-text">
-          <p class="role"><span id="typed">${S.roles[0]}</span><i class="caret"></i></p>
+          ${S.available ? `<p class="avail"><i></i>${S.available}</p>` : ""}
           <h1 class="grad">${S.headline}</h1>
+          <p class="iam">I'm a <span class="hl" id="typed">${S.roles[0]}</span><i class="caret"></i></p>
+          <p class="tag">${S.tagline}</p>
           <p class="lead">${S.intro}</p>
           <div class="btns">
             <a class="btn" href="projects.html">See my projects</a>
             ${S.resume ? `<a class="btn ghost" href="${S.resume}">View resume</a>` : `<a class="btn ghost" href="contact.html">Get in touch</a>`}
+          </div>
+          <div class="socials">
+            ${S.links.map(l => `<a class="soc" href="${l.url}" target="_blank" rel="noopener" aria-label="${l.label}">${ICON[l.label.toLowerCase()] || ICON.mail}</a>`).join("")}
+            <a class="soc" href="mailto:${S.email}" aria-label="Email">${ICON.mail}</a>
           </div>
         </div>
         <div class="stage">
@@ -66,9 +72,9 @@
       <section class="ab">
         <h2 class="sh gl">A little about me</h2>
         <div class="card sum">
-        ${S.photo
-  ? `<div class="sum-photo"><img src="${S.photo}" alt="${S.name}"><div class="sum-cap"><b>${S.name}</b><span>${S.role}</span></div></div>`
-  : `<div class="sum-id">${avatar()}<p class="sum-name">${S.name}</p><p class="sum-role">${S.role}</p></div>`}
+          ${S.photo
+            ? `<div class="sum-photo"><img src="${S.photo}" alt="${S.name}"><div class="sum-cap"><b>${S.name}</b><span>${S.role}</span></div></div>`
+            : `<div class="sum-id">${avatar()}<p class="sum-name">${S.name}</p><p class="sum-role">${S.role}</p></div>`}
           <div class="sum-body">${[["🌸", "Who I am", S.summary.who], ["💻", "What I'm doing", S.summary.doing], ["✨", "What I can do", S.summary.can]]
             .map(r => `<div class="sum-row"><span class="sum-ic">${r[0]}</span><div><h3>${r[1]}</h3><p>${r[2]}</p></div></div>`).join("")}</div>
         </div>
@@ -113,7 +119,6 @@
           <div class="chips">${chips(r.tags)}</div>
           <details class="papers"><summary>Papers read (${r.papers.length})</summary><ul>${li(r.papers)}</ul></details></article>`).join("")}</div>`,
 
-   
     projects: () => head("Projects", "Data and AI work I've built. Open a card to see the full details.") +
       `<div class="grid pgrid">${S.projects.map(p => `
         <article class="card prj">
@@ -122,7 +127,7 @@
           <h3>${p.title}</h3>
           <p class="meta">${p.type}${p.dates ? ` · ${p.dates}` : ""}</p>
           <p>${p.overview}</p>
-          ${p.link ? `<a class="btn small" href="${p.link}" target="_blank" rel="noopener">View project</a>`: ""}
+          ${p.link ? `<a class="btn small" href="${p.link}" target="_blank" rel="noopener">View project</a>` : ""}
           <details class="papers prj-sum"><summary>Project details</summary>
             ${p.sections.map(x => `<div class="prj-sec"><h4>${x.heading}</h4>${x.text ? `<p>${x.text}</p>` : ""}${x.bullets ? `<ul>${li(x.bullets)}</ul>` : ""}${x.chips ? `<div class="chips">${chips(x.chips)}</div>` : ""}${x.soon ? `<p class="soon">${x.soon}</p>` : ""}</div>`).join("")}
           </details>
@@ -159,13 +164,12 @@
       <ul>${nav.map(n => `<li><a href="${n[1]}"${n[0] === page ? ' aria-current="page"' : ""}>${n[2]}</a></li>`).join("")}</ul>
       <button class="theme" id="themeBtn" type="button" aria-label="Toggle dark mode">🌙</button>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
-
     </nav>
     <main class="wrap">${(views[page] || views.home)()}</main>
     <footer class="foot"><p>&copy; ${new Date().getFullYear()} ${S.name}</p>
       <p>${S.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join("")}<a href="mailto:${S.email}">Email</a></p></footer>`);
 
-      /* ---------- theme (light / dark) ---------- */
+  /* ---------- theme (light / dark) ---------- */
   const root = document.documentElement, themeBtn = document.getElementById("themeBtn");
   const setTheme = t => {
     root.dataset.theme = t;
@@ -188,6 +192,29 @@
   });
   document.addEventListener("click", e => { if (!e.target.closest(".nav")) closeMenu(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+
+  /* ---------- favicon (browser tab icon) ---------- */
+  (() => {
+    const FAV = { zoom: 1.2, x: .5, y: .12 };   /* zoom in on the face: raise zoom, or lower y to move the crop up */
+    let link = document.querySelector('link[rel~="icon"]');
+    if (!link) { link = document.createElement("link"); link.rel = "icon"; document.head.appendChild(link); }
+    const fallback = () => {
+      link.type = "image/svg+xml";
+      link.href = "data:image/svg+xml," + encodeURIComponent(
+        `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#a855f7'/><stop offset='1' stop-color='#ec4899'/></linearGradient></defs><rect width='64' height='64' rx='32' fill='url(#g)'/><text x='32' y='41' font-family='Georgia,serif' font-size='28' font-weight='700' fill='#fff' text-anchor='middle'>${S.initials}</text></svg>`);
+    };
+    fallback();                       /* shows the monogram instantly, instead of the globe */
+    if (!S.photo) return;
+    const img = new Image();
+    img.onload = () => { try {
+      const c = document.createElement("canvas"); c.width = c.height = 64;
+      const g = c.getContext("2d"), s = Math.min(img.width, img.height) / FAV.zoom;
+      g.beginPath(); g.arc(32, 32, 32, 0, 6.2832); g.clip();
+      g.drawImage(img, (img.width - s) * FAV.x, (img.height - s) * FAV.y, s, s, 0, 0, 64, 64);
+      link.type = "image/png"; link.href = c.toDataURL("image/png");
+    } catch (_) { /* keep the monogram */ } };
+    img.src = S.photo;
+  })();
 
   /* ---------- interactions ---------- */
   const fine = matchMedia("(hover: hover)").matches, calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
