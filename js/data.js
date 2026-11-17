@@ -5,6 +5,7 @@
 const SITE = {
   name: "Suu Wutt Yee Hnin",
   initials: "SW",
+  role: "I am a Data Analyst",
   roles: ["Data Analyst", "HND Computing student", "Data Science explorer", "AI and ML learner"],  // typed after "I'm a" on the home page
   headline: "Hi, I'm Suu Wutt Yee Hnin.",
   tagline: "Analysis · Research · Statistical Modelling · AI/ML",   // short line of strengths under the role
