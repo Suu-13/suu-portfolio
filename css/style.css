@@ -311,3 +311,91 @@ section{margin-top:clamp(48px,6vw,88px)}
 @media(min-width:1600px){
   .pc{flex-basis:calc((100% - 54px)/4)}
 }
+
+.wrap{overflow-x:visible}
+html,body{overflow-x:clip}
+
+/* ---------- 2. Theme variables + new buttons ---------- */
+:root{--nav-bg:rgba(255,255,255,.96)}
+.theme,.burger{flex:none;width:40px;height:40px;border:0;border-radius:50%;background:rgba(168,85,247,.12);color:var(--violet);font-size:1.1rem;line-height:1;cursor:pointer;display:grid;place-items:center;transition:transform .2s,background .2s}
+.theme:hover,.burger:hover{background:rgba(168,85,247,.24);transform:scale(1.08)}
+.burger{display:none}
+
+/* ---------- 3. Dark mode ---------- */
+:root[data-theme="dark"]{color-scheme:dark;--ink:#f3ecff;--muted:#b9b0d2;--card:rgba(34,27,58,.78);--nav-bg:rgba(26,18,48,.97)}
+[data-theme="dark"] body{background:radial-gradient(circle,rgba(192,132,252,.16) 1.2px,transparent 1.7px) 0 0/22px 22px,linear-gradient(135deg,#1a1033,#2b1242 50%,#101b3d);background-attachment:fixed}
+[data-theme="dark"] .blob{opacity:.3}
+[data-theme="dark"] .nav{background:rgba(26,18,48,.78);box-shadow:0 8px 28px rgba(0,0,0,.45)}
+[data-theme="dark"] .nav li a:hover{background:rgba(192,132,252,.18)}
+[data-theme="dark"] .theme,[data-theme="dark"] .burger{background:rgba(192,132,252,.18);color:#e9d5ff}
+[data-theme="dark"] .chip{background:rgba(192,132,252,.18);color:#e9d5ff}
+[data-theme="dark"] .marquee .chip{background:rgba(255,255,255,.08);box-shadow:none}
+[data-theme="dark"] .btn.ghost{background:rgba(255,255,255,.08);color:#e9d5ff;box-shadow:inset 0 0 0 2px rgba(192,132,252,.45)}
+[data-theme="dark"] .id-card{background:#241a3f}
+[data-theme="dark"] .avatar{border-color:#3b2a5e}
+[data-theme="dark"] .sticker{background:#2a1f4a;color:#e9d5ff}
+[data-theme="dark"] .s2,[data-theme="dark"] .s3{color:#f9a8d4}
+[data-theme="dark"] .rc h3,[data-theme="dark"] .prj h3,[data-theme="dark"] .xc h3,[data-theme="dark"] .sum-row h3,[data-theme="dark"] .sum-name,
+[data-theme="dark"] .int b,[data-theme="dark"] .tg h3,[data-theme="dark"] .soft h3,[data-theme="dark"] .cc h3,[data-theme="dark"] .mf label,
+[data-theme="dark"] .prj-sec h4,[data-theme="dark"] .xdet li b{color:#e9d5ff}
+[data-theme="dark"] .tile{background:linear-gradient(145deg,rgba(91,33,182,.5),rgba(157,23,77,.4))}
+[data-theme="dark"] .tile p{color:var(--muted)}
+[data-theme="dark"] .tile .ic,[data-theme="dark"] .int-ic{background:rgba(255,255,255,.12)}
+[data-theme="dark"] .tile .go{color:#d8b4fe}
+[data-theme="dark"] .ar{background:#2a1f4a;color:#e9d5ff}
+[data-theme="dark"] .tabs{background:rgba(255,255,255,.08)}
+[data-theme="dark"] .yr{background:#2a1f4a;box-shadow:inset 0 0 0 2px rgba(192,132,252,.4)}
+[data-theme="dark"] .papers{border-top-color:rgba(255,255,255,.14)}
+[data-theme="dark"] .prj-sec{border-top-color:rgba(192,132,252,.3)}
+[data-theme="dark"] .sum{background:linear-gradient(145deg,rgba(38,28,66,.92),rgba(62,26,72,.85))}
+[data-theme="dark"] .sum-ic{background:#2a1f4a}
+[data-theme="dark"] .int{background:linear-gradient(145deg,rgba(168,85,247,.25),rgba(236,72,153,.2))}
+[data-theme="dark"] .int em{color:var(--muted)}
+[data-theme="dark"] .soft{background:rgba(255,255,255,.05);border-color:rgba(249,168,212,.5)}
+[data-theme="dark"] .soft:hover{background:rgba(255,255,255,.1)}
+[data-theme="dark"] .soft-ic{background:rgba(236,72,153,.22)}
+[data-theme="dark"] .avail{background:#2a1f4a}
+[data-theme="dark"] .msg{background:linear-gradient(145deg,rgba(38,28,66,.92),rgba(52,30,82,.85))}
+[data-theme="dark"] .mf input,[data-theme="dark"] .mf textarea{background:#1c1433;color:var(--ink);border-color:rgba(192,132,252,.35)}
+[data-theme="dark"] .repo-soon,[data-theme="dark"] .prj-sec .soon{background:rgba(255,255,255,.05);border-color:rgba(192,132,252,.35)}
+
+/* ---------- 4. Tablet and below (900px and under) ---------- */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:32px;min-height:0}
+  .stage{max-width:420px;margin:0 auto;width:100%}
+  .id-card{max-width:360px;margin:0 auto}
+  .pgrid{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+  .rgrid{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+  .tgrid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+  .softs{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+  .cgrid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+}
+@media(min-width:480px) and (max-width:899px){.tiles{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- 5. Mobile menu (860px and under) ---------- */
+@media(max-width:860px){
+  .nav{flex-wrap:nowrap;border-radius:999px}
+  .burger{display:grid}
+  .theme{margin-left:auto}
+  .nav ul{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;width:auto;margin:0;flex-direction:column;gap:2px;padding:10px;
+    border-radius:24px;background:var(--nav-bg);backdrop-filter:blur(14px);box-shadow:0 16px 36px rgba(168,85,247,.28);overflow:visible}
+  .nav.open ul{display:flex}
+  .nav li a{padding:12px 18px;font-size:1rem}
+}
+
+/* ---------- 6. Phones (480px and under) ---------- */
+@media(max-width:480px){
+  .sticker{font-size:.75rem;padding:5px 12px}
+  .s1{left:0}.s2{right:0}.s3{left:0}.s4{right:0}
+  .stage{padding:18px 14px}
+  .id-card{padding:24px 18px}
+  .avatar{width:130px;height:130px}
+  .card{padding:20px}
+  .cc{padding:22px}
+  .msg{padding:22px}
+  .stat:last-child{grid-column:1/-1}
+  .cta{padding:40px 18px;border-radius:28px}
+  .btns .btn{flex:1 1 100%;text-align:center}
+  .foot{justify-content:center;text-align:center}
+  .foot a{margin:0 8px}
+}

@@ -157,10 +157,37 @@
     <nav class="nav" aria-label="Main">
       <a class="logo" href="index.html" aria-label="${S.name}, home">${S.photo ? `<img class="badge" src="${S.photo}" alt="${S.name}">` : `<span class="badge">${S.initials}</span>`}</a>
       <ul>${nav.map(n => `<li><a href="${n[1]}"${n[0] === page ? ' aria-current="page"' : ""}>${n[2]}</a></li>`).join("")}</ul>
+      <button class="theme" id="themeBtn" type="button" aria-label="Toggle dark mode">🌙</button>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+
     </nav>
     <main class="wrap">${(views[page] || views.home)()}</main>
     <footer class="foot"><p>&copy; ${new Date().getFullYear()} ${S.name}</p>
       <p>${S.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join("")}<a href="mailto:${S.email}">Email</a></p></footer>`);
+
+      /* ---------- theme (light / dark) ---------- */
+  const root = document.documentElement, themeBtn = document.getElementById("themeBtn");
+  const setTheme = t => {
+    root.dataset.theme = t;
+    themeBtn.textContent = t === "dark" ? "☀️" : "🌙";
+    themeBtn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  };
+  let saved = null; try { saved = localStorage.getItem("theme"); } catch (_) {}
+  setTheme(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+  themeBtn.addEventListener("click", () => {
+    const t = root.dataset.theme === "dark" ? "light" : "dark";
+    setTheme(t); try { localStorage.setItem("theme", t); } catch (_) {}
+  });
+
+  /* ---------- mobile menu ---------- */
+  const navEl = document.querySelector(".nav"), burger = document.getElementById("burger");
+  const closeMenu = () => { navEl.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); burger.textContent = "☰"; };
+  burger.addEventListener("click", () => {
+    const open = navEl.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open); burger.textContent = open ? "✕" : "☰";
+  });
+  document.addEventListener("click", e => { if (!e.target.closest(".nav")) closeMenu(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
 
   /* ---------- interactions ---------- */
   const fine = matchMedia("(hover: hover)").matches, calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
